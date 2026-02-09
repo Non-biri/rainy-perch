@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
+
+@theme {
+  --color-brown-900: #2D241E;
+  --color-brown-800: #43342E;
+  --color-brown-100: #EFEBE9;
+
+  --color-cream: #F4F1EA;
+
+  --color-green: #6B8E23;
+  --color-green-dark: #556B2F;
+
+  --font-serif: "Noto Serif JP", serif;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  @apply bg-cream text-brown-800 font-serif;
+}
