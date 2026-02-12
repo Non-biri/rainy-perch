@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // Import images
 import staffAIcon from '../assets/images/staff_A_icon.jpg';
