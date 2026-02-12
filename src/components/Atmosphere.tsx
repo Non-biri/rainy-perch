@@ -8,7 +8,7 @@ const Atmosphere: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="md:col-span-2">
                         <img
-                            src="https://images.unsplash.com/photo-1445116572660-d3842250e39c?q=80&w=800&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop"
                             alt="Cozy Corner"
                             className="w-full h-64 md:h-80 object-cover rounded-lg opacity-90 hover:opacity-100 transition-opacity"
                         />
