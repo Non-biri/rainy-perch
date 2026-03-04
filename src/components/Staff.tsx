@@ -12,6 +12,8 @@ import staffBStand2 from '../assets/images/staff_B_stand_2.png';
 import staffCIcon from '../assets/images/staff_C_icon.jpg';
 import staffCStand1 from '../assets/images/staff_C_stand_1.png';
 import staffCStand2 from '../assets/images/staff_C_stand_2.png';
+import staffCStand3 from '../assets/images/staff_C_stand_3.png';
+import staffCStand4 from '../assets/images/staff_C_stand_4.png';
 
 interface StaffMember {
     id: number;
@@ -52,7 +54,7 @@ const Staff: React.FC = () => {
             name: "Staff C",
             role: "Manager",
             icon: staffCIcon,
-            stands: [staffCStand1, staffCStand2],
+            stands: [staffCStand1, staffCStand2, staffCStand3, staffCStand4],
             comment: "皆様のご来店を心よりお待ちしております。",
             description: "Rainy Perchが皆様にとって心地よい止まり木となりますように。いつでもお気軽にお声がけください。"
         },
@@ -76,6 +78,16 @@ const Staff: React.FC = () => {
         if (selectedStaff) {
             setCurrentStandIndex((prev) => (prev + 1) % selectedStaff.stands.length);
         }
+    };
+
+    const navigateStaff = (direction: 'prev' | 'next') => {
+        if (!selectedStaff) return;
+        const currentIndex = staffMembers.findIndex(s => s.id === selectedStaff.id);
+        const nextIndex = direction === 'next'
+            ? (currentIndex + 1) % staffMembers.length
+            : (currentIndex - 1 + staffMembers.length) % staffMembers.length;
+        setSelectedStaff(staffMembers[nextIndex]);
+        setCurrentStandIndex(0);
     };
 
     return (
@@ -164,6 +176,22 @@ const Staff: React.FC = () => {
                             </div>
                         </div>
                     </div>
+
+                    {/* Navigation Arrows */}
+                    <button
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 text-white text-2xl flex items-center justify-center transition-colors"
+                        onClick={(e) => { e.stopPropagation(); navigateStaff('prev'); }}
+                        aria-label="Previous staff"
+                    >
+                        ‹
+                    </button>
+                    <button
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 text-white text-2xl flex items-center justify-center transition-colors"
+                        onClick={(e) => { e.stopPropagation(); navigateStaff('next'); }}
+                        aria-label="Next staff"
+                    >
+                        ›
+                    </button>
                 </div>
             )}
         </section>

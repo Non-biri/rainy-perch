@@ -5,7 +5,7 @@ import Opening from './components/Opening';
 import Concept from './components/Concept';
 // import Menu from './components/Menu';
 import Staff from './components/Staff';
-import Atmosphere from './components/Atmosphere';
+import Gallery from './components/Gallery';
 import News from './components/News';
 import HowToJoin from './components/HowToJoin';
 import Footer from './components/Footer';
@@ -21,7 +21,7 @@ function App() {
         <Concept />
         {/* <Menu /> */}
         <Staff />
-        <Atmosphere />
+        <Gallery />
         <News />
         <HowToJoin />
         <Footer />
