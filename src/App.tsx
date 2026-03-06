@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="min-h-screen bg-cream">
       {loading && <Opening onComplete={() => setLoading(false)} />}
-      <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+      <div>
         <Hero />
         <Concept />
         {/* <Menu /> */}

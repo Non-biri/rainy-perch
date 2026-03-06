@@ -19,6 +19,7 @@ const Menu: React.FC = () => {
                                 src={item.src}
                                 alt={item.alt}
                                 className="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-500"
+                                loading="lazy"
                             />
                         </div>
                     ))}
