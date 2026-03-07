@@ -24,7 +24,7 @@ interface StaffMember {
     icon: string;
     stands: string[];
     comment: string;
-    description?: string;
+    avatar?: string;
 }
 
 const Staff: React.FC = () => {
@@ -35,12 +35,12 @@ const Staff: React.FC = () => {
     const staffMembers: StaffMember[] = [
         {
             id: 1,
-            name: "Hishumin",
+            name: "hishumin",
             role: "主催/店長",
             icon: staffAIcon,
             stands: [staffAStand1, staffAStand2],
-            comment: "雨の日は、ここでゆっくりしませんか。",
-            description: "どうも店長です。だいたい何でも好きな雑食です。本名がBLの主人公と一緒だったりします。"
+            comment: "どうも店長です。だいたい何でも好きな雑食です。本名がBLの主人公と一緒だったりします。",
+            avatar: "狛乃(ラシュも増えるかも)"
         },
         {
             id: 2,
@@ -48,17 +48,17 @@ const Staff: React.FC = () => {
             role: "ワールド制作/バリスタ",
             icon: staffBIcon,
             stands: [staffBStand1, staffBStand2, staffBStand3, staffBStand4],
-            comment: "美味しいスイーツをご用意してお待ちしています。",
-            description: "ワールド作成担当です。ゆったり過ごせる雰囲気になってると嬉しいです！"
+            comment: "ワールド作成担当です。ゆったり過ごせる雰囲気になってると嬉しいです！",
+            avatar: "Lapwing or 山羊のメア"
         },
         {
             id: 3,
-            name: "Makararu",
+            name: "まからる",
             role: "広報/ホール・カウンター",
             icon: staffCIcon,
             stands: [staffCStand1, staffCStand2, staffCStand3, staffCStand4],
-            comment: "皆様のご来店を心よりお待ちしております。",
-            description: "初めましての人と楽しく時間を過ごせる、そんな空間を作りたいです！ ぜひご来店ください！"
+            comment: "初めましての人と楽しく時間を過ごせる、そんな空間を作りたいです！ ぜひご来店ください！",
+            avatar: "森羅ちゃん(偶に狛乃くん)"
         },
     ];
 
@@ -143,6 +143,17 @@ const Staff: React.FC = () => {
                                 <div className="absolute bottom-4 right-4 bg-white/80 p-2 rounded-full text-xs font-bold text-brown-900 shadow-sm pointer-events-none">
                                     Click to change image
                                 </div>
+                                {/* Pose Dots */}
+                                <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                                    {selectedStaff.stands.map((_, idx) => (
+                                        <button
+                                            key={idx}
+                                            className={`w-3 h-3 rounded-full transition-all border-2 ${idx === currentStandIndex ? 'bg-brown-900 border-brown-900 scale-110' : 'bg-transparent border-brown-400 hover:border-brown-700'}`}
+                                            onClick={() => setCurrentStandIndex(idx)}
+                                            aria-label={`Switch to pose ${idx + 1}`}
+                                        />
+                                    ))}
+                                </div>
                             </div>
 
                             {/* Info Section */}
@@ -162,21 +173,10 @@ const Staff: React.FC = () => {
                                         {selectedStaff.comment}
                                     </p>
                                     <p className="">
-                                        {selectedStaff.description}
+                                        使用アバター：{selectedStaff.avatar}
                                     </p>
                                 </div>
 
-                                <div className="mt-8 pt-6 border-t border-brown-200 flex gap-4">
-                                    {/* Pose Switcher Buttons */}
-                                    {selectedStaff.stands.map((_, idx) => (
-                                        <button
-                                            key={idx}
-                                            className={`w-3 h-3 rounded-full transition-colors ${idx === currentStandIndex ? 'bg-brown-900' : 'bg-brown-300 hover:bg-brown-500'}`}
-                                            onClick={() => setCurrentStandIndex(idx)}
-                                            aria-label={`Switch to pose ${idx + 1}`}
-                                        />
-                                    ))}
-                                </div>
                             </div>
                         </div>
 
@@ -195,17 +195,7 @@ const Staff: React.FC = () => {
                         >
                             ›
                         </button>
-                        {/* Mobile: arrows at bottom */}
-                        <div className="flex md:hidden justify-center gap-8 mt-4">
-                            <button
-                                className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white text-2xl flex items-center justify-center transition-colors"
-                                onClick={() => navigateStaff('prev')}
-                            >‹</button>
-                            <button
-                                className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white text-2xl flex items-center justify-center transition-colors"
-                                onClick={() => navigateStaff('next')}
-                            >›</button>
-                        </div>
+
                     </div>
                 </div>
             )}
