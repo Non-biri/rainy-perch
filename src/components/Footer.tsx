@@ -2,7 +2,8 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="py-8 bg-brown-900 text-cream text-center border-t border-white/10">
+        <footer className="py-8 bg-brown-900 text-cream text-center">
+
             <div className="flex justify-center space-x-6 mb-4">
                 <a
                     href="https://x.com/RainyPerch"

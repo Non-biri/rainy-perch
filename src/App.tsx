@@ -8,6 +8,7 @@ import Staff from './components/Staff';
 import Gallery from './components/Gallery';
 import News from './components/News';
 import HowToJoin from './components/HowToJoin';
+import Disclaimer from './components/Disclaimer';
 import Footer from './components/Footer';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Gallery />
         <News />
         <HowToJoin />
+        <Disclaimer />
         <Footer />
       </div>
     </div>

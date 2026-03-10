@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import mainBurner1 from '../assets/images/main_burner_1.jpg';
 import mainBurner2 from '../assets/images/main_burner_2.jpg';
 import mainBurner3 from '../assets/images/main_burner_3.jpg';
+import mainBurner4 from '../assets/images/main_burner_4.jpg';
+import mainBurner5 from '../assets/images/main_burner_5.jpg';
 
 const Hero: React.FC = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -13,13 +15,15 @@ const Hero: React.FC = () => {
         mainBurner1,
         mainBurner2,
         mainBurner3,
+        mainBurner4,
+        mainBurner5,
     ];
 
     useEffect(() => {
         // Change image every 10 seconds (10000ms)
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 10000);
+        }, 8000);
 
         return () => clearInterval(interval);
     }, [images.length]);
