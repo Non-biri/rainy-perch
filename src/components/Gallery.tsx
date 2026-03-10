@@ -50,7 +50,7 @@ const Gallery: React.FC = () => {
                 <h2 className="text-3xl font-serif font-bold text-center mb-12">Gallery</h2>
 
                 {/* Collage-style masonry grid */}
-                <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+                <div className="columns-2 md:columns-3 gap-4 space-y-4">
                     {images.map((img, index) => (
                         <div
                             key={img.filename}

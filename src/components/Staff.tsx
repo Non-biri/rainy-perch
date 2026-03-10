@@ -113,8 +113,8 @@ const Staff: React.FC = () => {
 
                             </div>
                             <h3 className="text-2xl font-bold text-brown-900">{staff.name}</h3>
-                            <p className="text-green-dark text-lg mb-2">{staff.role}</p>
-                            <p className="text-brown-800 italic">{staff.comment}</p>
+                            <p className="text-green-dark text-sm md:text-lg mb-2">{staff.role}</p>
+                            <p className="text-brown-800 italic text-sm md:text-base">{staff.comment}</p>
                         </div>
                     ))}
                 </div>
@@ -141,7 +141,7 @@ const Staff: React.FC = () => {
                                     onClick={toggleStand}
                                 />
                                 <div className="absolute bottom-4 right-4 bg-white/80 p-2 rounded-full text-xs font-bold text-brown-900 shadow-sm pointer-events-none">
-                                    Click to change image
+                                    Change image
                                 </div>
                                 {/* Pose Dots */}
                                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
@@ -168,8 +168,8 @@ const Staff: React.FC = () => {
                                 <p className="text-green-DEFAULT font-bold tracking-wider mb-2">{selectedStaff.role}</p>
                                 <h3 className="text-4xl font-serif font-bold text-brown-900 mb-6">{selectedStaff.name}</h3>
 
-                                <div className="space-y-4 text-brown-800 leading-relaxed overflow-y-auto max-h-60 pr-2">
-                                    <p className="font-bold text-lg border-l-4 border-green-DEFAULT pl-4 italic">
+                                <div className="space-y-4 text-brown-800 text-sm md:text-base leading-relaxed overflow-y-auto max-h-60 pr-2">
+                                    <p className="font-bold border-l-4 border-green-DEFAULT pl-4 italic">
                                         {selectedStaff.comment}
                                     </p>
                                     <p className="">

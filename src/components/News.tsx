@@ -6,9 +6,9 @@ const News: React.FC = () => {
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-serif font-bold mb-8">News</h2>
                 <div className="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
-                    <p className="mb-6 text-lg">
-                        最新情報は公式X (旧Twitter) にて配信しています。<br />
-                        臨時休業や季節のメニューなど、こちらをご確認ください。
+                    <p className="mb-6 text-sm md:text-lg">
+                        次回営業日など最新情報は<br />
+                        公式X (旧Twitter) にてご確認ください。
                     </p>
                     <a
                         href="https://x.com/RainyPerch"

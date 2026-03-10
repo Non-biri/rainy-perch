@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
                 <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 tracking-wider drop-shadow-lg">
                     Rainy・Perch
                 </h1>
-                <p className="text-xl md:text-2xl font-light tracking-wide drop-shadow-md">
+                <p className="text-base md:text-2xl font-light tracking-wide drop-shadow-md">
                     雨の音と、コーヒーの香り。
                     <br />
                     仮想世界で少しだけ、羽を休めませんか。
