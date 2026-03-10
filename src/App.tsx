@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Hero from './components/Hero';
 import Opening from './components/Opening';
 import Concept from './components/Concept';
-// import Menu from './components/Menu';
+// Removed Menu import
 import Staff from './components/Staff';
 import Gallery from './components/Gallery';
 import News from './components/News';
@@ -20,7 +20,7 @@ function App() {
       <div>
         <Hero />
         <Concept />
-        {/* <Menu /> */}
+        {/* Removed Menu component */}
         <Staff />
         <Gallery />
         <News />

@@ -27,40 +27,40 @@ interface StaffMember {
     avatar?: string;
 }
 
+const staffMembers: StaffMember[] = [
+    {
+        id: 1,
+        name: "hishumin",
+        role: "主催/店長",
+        icon: staffAIcon,
+        stands: [staffAStand1, staffAStand2],
+        comment: "どうも店長です。だいたい何でも好きな雑食です。本名がBLの主人公と一緒だったりします。",
+        avatar: "狛乃(ラシュも増えるかも)"
+    },
+    {
+        id: 2,
+        name: "NON_",
+        role: "ワールド制作/バリスタ",
+        icon: staffBIcon,
+        stands: [staffBStand1, staffBStand2, staffBStand3, staffBStand4],
+        comment: "ワールド作成担当です。ゆったり過ごせる雰囲気になってると嬉しいです！",
+        avatar: "Lapwing or 山羊のメア"
+    },
+    {
+        id: 3,
+        name: "まからる",
+        role: "広報/ホール・カウンター",
+        icon: staffCIcon,
+        stands: [staffCStand1, staffCStand2, staffCStand3, staffCStand4],
+        comment: "初めましての人と楽しく時間を過ごせる、そんな空間を作りたいです！ ぜひご来店ください！",
+        avatar: "森羅ちゃん(偶に狛乃くん)"
+    },
+];
+
 const Staff: React.FC = () => {
     const [selectedStaff, setSelectedStaff] = useState<StaffMember | null>(null);
     const [currentStandIndex, setCurrentStandIndex] = useState(0);
     const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const staffMembers: StaffMember[] = [
-        {
-            id: 1,
-            name: "hishumin",
-            role: "主催/店長",
-            icon: staffAIcon,
-            stands: [staffAStand1, staffAStand2],
-            comment: "どうも店長です。だいたい何でも好きな雑食です。本名がBLの主人公と一緒だったりします。",
-            avatar: "狛乃(ラシュも増えるかも)"
-        },
-        {
-            id: 2,
-            name: "NON_",
-            role: "ワールド制作/バリスタ",
-            icon: staffBIcon,
-            stands: [staffBStand1, staffBStand2, staffBStand3, staffBStand4],
-            comment: "ワールド作成担当です。ゆったり過ごせる雰囲気になってると嬉しいです！",
-            avatar: "Lapwing or 山羊のメア"
-        },
-        {
-            id: 3,
-            name: "まからる",
-            role: "広報/ホール・カウンター",
-            icon: staffCIcon,
-            stands: [staffCStand1, staffCStand2, staffCStand3, staffCStand4],
-            comment: "初めましての人と楽しく時間を過ごせる、そんな空間を作りたいです！ ぜひご来店ください！",
-            avatar: "森羅ちゃん(偶に狛乃くん)"
-        },
-    ];
 
     const handleOpenModal = (staff: StaffMember) => {
         setSelectedStaff(staff);

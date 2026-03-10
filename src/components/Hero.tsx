@@ -10,7 +10,6 @@ const Hero: React.FC = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     // Array of images for the slider
-    // Array of images for the slider
     const images = [
         mainBurner1,
         mainBurner2,
@@ -20,7 +19,7 @@ const Hero: React.FC = () => {
     ];
 
     useEffect(() => {
-        // Change image every 10 seconds (10000ms)
+        // Change image every 8 seconds (8000ms)
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 8000);

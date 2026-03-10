@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import joinImage from '../assets/images/CRP_Join.jpg';
 import notesImage from '../assets/images/CRP_Notes.jpg';
 
+const items = [
+    { src: joinImage, alt: '参加方法', label: '参加方法' },
+    { src: notesImage, alt: 'イベント注意事項', label: 'イベント注意事項' },
+];
+
 const HowToJoin: React.FC = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isLightboxVisible, setIsLightboxVisible] = useState(false);
@@ -17,11 +22,6 @@ const HowToJoin: React.FC = () => {
         setIsLightboxVisible(false);
         setTimeout(() => setSelectedImage(null), 300);
     };
-
-    const items = [
-        { src: joinImage, alt: '参加方法', label: '参加方法' },
-        { src: notesImage, alt: 'イベント注意事項', label: 'イベント注意事項' },
-    ];
 
     return (
         <section className="py-20 px-4 bg-brown-800 text-cream">
