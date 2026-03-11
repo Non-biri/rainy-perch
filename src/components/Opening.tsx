@@ -41,7 +41,7 @@ const Opening: React.FC<OpeningProps> = ({ onComplete }) => {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-brown-900 text-cream transition-opacity duration-700 overflow-hidden ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-brown-900 text-cream transition-opacity duration-800 overflow-hidden ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
         >
             {/* Rain Effect */}
