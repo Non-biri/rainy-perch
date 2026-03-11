@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 // Import images
 import staffAIcon from '../assets/images/staff_A_icon.jpg';
 import staffAStand1 from '../assets/images/staff_A_stand_1.png';
 import staffAStand2 from '../assets/images/staff_A_stand_2.png';
+import staffAStand3 from '../assets/images/staff_A_stand_3.png';
+import staffAStand4 from '../assets/images/staff_A_stand_4.png';
 
 import staffBIcon from '../assets/images/staff_B_icon.jpg';
 import staffBStand1 from '../assets/images/staff_B_stand_1.png';
@@ -33,7 +35,7 @@ const staffMembers: StaffMember[] = [
         name: "hishumin",
         role: "主催/店長",
         icon: staffAIcon,
-        stands: [staffAStand1, staffAStand2],
+        stands: [staffAStand1, staffAStand2, staffAStand3, staffAStand4],
         comment: "どうも店長です。だいたい何でも好きな雑食です。本名がBLの主人公と一緒だったりします。",
         avatar: "狛乃(ラシュも増えるかも)"
     },
@@ -62,10 +64,77 @@ const Staff: React.FC = () => {
     const [currentStandIndex, setCurrentStandIndex] = useState(0);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
+    // Infinite carousel state
+    // slideIndex is offset by 1 because we prepend a clone of the last image
+    const [slideIndex, setSlideIndex] = useState(1);
+    const [isTransitioning, setIsTransitioning] = useState(true);
+    const sliderRef = useRef<HTMLDivElement>(null);
+
+    // Build the extended slides array: [lastClone, ...originals, firstClone]
+    const extendedStands = selectedStaff
+        ? [selectedStaff.stands[selectedStaff.stands.length - 1], ...selectedStaff.stands, selectedStaff.stands[0]]
+        : [];
+
+    // After transition ends on a clone slide, snap back to the real slide instantly
+    const handleTransitionEnd = useCallback(() => {
+        if (!selectedStaff) return;
+        const total = selectedStaff.stands.length;
+        if (slideIndex === 0) {
+            // We slid to the prepended clone (last image) -> snap to real last
+            setIsTransitioning(false);
+            setSlideIndex(total);
+        } else if (slideIndex === total + 1) {
+            // We slid to the appended clone (first image) -> snap to real first
+            setIsTransitioning(false);
+            setSlideIndex(1);
+        }
+        // Update the logical index for pose dots
+        setCurrentStandIndex((slideIndex - 1 + total) % total);
+    }, [slideIndex, selectedStaff]);
+
+    // Re-enable transition after a snap-back
+    useEffect(() => {
+        if (!isTransitioning) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => setIsTransitioning(true));
+            });
+        }
+    }, [isTransitioning]);
+
+    const goToSlide = useCallback((direction: 'next' | 'prev') => {
+        setIsTransitioning(true);
+        setSlideIndex((prev) => direction === 'next' ? prev + 1 : prev - 1);
+    }, []);
+
+    // Touch handlers for swipe
+    const touchStartX = useRef<number | null>(null);
+    const touchEndX = useRef<number | null>(null);
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        touchEndX.current = null;
+        touchStartX.current = e.targetTouches[0].clientX;
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.targetTouches[0].clientX;
+    };
+
+    const onTouchEnd = () => {
+        if (touchStartX.current === null || touchEndX.current === null) return;
+        const distance = touchStartX.current - touchEndX.current;
+        if (distance > minSwipeDistance) {
+            goToSlide('next');
+        } else if (distance < -minSwipeDistance) {
+            goToSlide('prev');
+        }
+    };
+
     const handleOpenModal = (staff: StaffMember) => {
         setSelectedStaff(staff);
         setCurrentStandIndex(0);
-        // Trigger animation after mount
+        setSlideIndex(1);
+        setIsTransitioning(true);
         requestAnimationFrame(() => {
             requestAnimationFrame(() => setIsModalVisible(true));
         });
@@ -73,13 +142,11 @@ const Staff: React.FC = () => {
 
     const handleCloseModal = () => {
         setIsModalVisible(false);
-        setTimeout(() => setSelectedStaff(null), 300); // Wait for animation to finish
+        setTimeout(() => setSelectedStaff(null), 300);
     };
 
     const toggleStand = () => {
-        if (selectedStaff) {
-            setCurrentStandIndex((prev) => (prev + 1) % selectedStaff.stands.length);
-        }
+        goToSlide('next');
     };
 
     const navigateStaff = (direction: 'prev' | 'next') => {
@@ -88,8 +155,14 @@ const Staff: React.FC = () => {
         const nextIndex = direction === 'next'
             ? (currentIndex + 1) % staffMembers.length
             : (currentIndex - 1 + staffMembers.length) % staffMembers.length;
-        setSelectedStaff(staffMembers[nextIndex]);
-        setCurrentStandIndex(0);
+        const nextStaff = staffMembers[nextIndex];
+        const newTotal = nextStaff.stands.length;
+        // Clamp slideIndex if the new staff has fewer images
+        const clampedSlide = slideIndex > newTotal ? newTotal : slideIndex;
+        setIsTransitioning(false);
+        setSlideIndex(clampedSlide);
+        setCurrentStandIndex(clampedSlide - 1);
+        setSelectedStaff(nextStaff);
     };
 
     return (
@@ -133,14 +206,30 @@ const Staff: React.FC = () => {
                                 }`}
                         >
                             {/* Image Section */}
-                            <div className="w-full md:w-1/2 bg-brown-100 relative h-[50vh] md:h-auto flex items-center justify-center overflow-hidden group">
-                                <img
-                                    src={selectedStaff.stands[currentStandIndex]}
-                                    alt={`${selectedStaff.name} Stand`}
-                                    className="h-full w-auto object-contain cursor-pointer transition-transform duration-300"
-                                    onClick={toggleStand}
-                                />
-                                <div className="absolute bottom-4 right-4 bg-white/80 p-2 rounded-full text-xs font-bold text-brown-900 shadow-sm pointer-events-none">
+                            <div
+                                className="w-full md:w-1/2 bg-brown-100 relative h-[50vh] md:h-auto overflow-hidden group"
+                                onTouchStart={onTouchStart}
+                                onTouchMove={onTouchMove}
+                                onTouchEnd={onTouchEnd}
+                            >
+                                <div
+                                    ref={sliderRef}
+                                    className={`flex w-full h-full ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
+                                    style={{ transform: `translateX(-${slideIndex * 100}%)` }}
+                                    onTransitionEnd={handleTransitionEnd}
+                                >
+                                    {extendedStands.map((stand, idx) => (
+                                        <div key={idx} className="w-full h-full flex-shrink-0 flex items-center justify-center">
+                                            <img
+                                                src={stand}
+                                                alt={`${selectedStaff.name} Stand`}
+                                                className="h-full w-auto object-contain cursor-pointer"
+                                                onClick={toggleStand}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="hidden md:block absolute bottom-4 right-4 bg-white/80 p-2 rounded-full text-xs font-bold text-brown-900 shadow-sm pointer-events-none">
                                     Change image
                                 </div>
                                 {/* Pose Dots */}
@@ -149,7 +238,7 @@ const Staff: React.FC = () => {
                                         <button
                                             key={idx}
                                             className={`w-3 h-3 rounded-full transition-all border-2 ${idx === currentStandIndex ? 'bg-brown-900 border-brown-900 scale-110' : 'bg-transparent border-brown-400 hover:border-brown-700'}`}
-                                            onClick={() => setCurrentStandIndex(idx)}
+                                            onClick={() => { setIsTransitioning(true); setSlideIndex(idx + 1); }}
                                             aria-label={`Switch to pose ${idx + 1}`}
                                         />
                                     ))}

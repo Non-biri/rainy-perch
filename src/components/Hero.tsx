@@ -56,6 +56,18 @@ const Hero: React.FC = () => {
                     仮想世界で少しだけ、羽を休めませんか。
                 </p>
             </div>
+
+            {/* Image Indicator Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+                {images.map((_, idx) => (
+                    <button
+                        key={idx}
+                        className={`w-2.5 h-2.5 rounded-full transition-all border-2 ${idx === currentImageIndex ? 'bg-cream border-cream scale-110' : 'bg-transparent border-cream/50 hover:border-cream/80'}`}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        aria-label={`Switch to image ${idx + 1}`}
+                    />
+                ))}
+            </div>
         </section>
     );
 };
