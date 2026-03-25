@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LINKS } from '../constants';
 import joinImage from '../assets/images/CRP_Join.jpg';
 import notesImage from '../assets/images/CRP_Notes.jpg';
 
@@ -42,7 +43,7 @@ const HowToJoin: React.FC = () => {
                             </span>
                         </p>
                         <a
-                            href="https://forms.gle/fd4SPZUDUaJaL33Y6"
+                            href={LINKS.reservationForm}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block bg-cream text-brown-900 font-bold px-8 py-3 rounded-full hover:bg-white transition-colors"

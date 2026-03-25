@@ -1,4 +1,5 @@
 import React from 'react';
+import { LINKS } from '../constants';
 
 const News: React.FC = () => {
     return (
@@ -10,7 +11,7 @@ const News: React.FC = () => {
                     公式X (旧Twitter) にてご確認ください。
                 </p>
                 <a
-                    href="https://x.com/RainyPerch"
+                    href={LINKS.x}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-brown-800 text-cream px-8 py-3 rounded-full hover:bg-brown-900 transition-colors font-bold"

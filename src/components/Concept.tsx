@@ -1,4 +1,5 @@
 import React from 'react';
+import { EVENT_NAME } from '../constants';
 
 const Concept: React.FC = () => {
     return (
@@ -7,7 +8,7 @@ const Concept: React.FC = () => {
                 <h2 className="text-3xl font-serif font-bold mb-10">Concept</h2>
                 <div className="space-y-6 text-sm md:text-lg leading-relaxed font-serif">
                     <p>
-                        Rainy・Perchは、雨の降る止まり木のような場所。
+                        {EVENT_NAME}は、雨の降る止まり木のような場所。
                     </p>
                     <p>
                         仮想世界の片隅で、静かな雨音と共に<br />

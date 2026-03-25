@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { EVENT_NAME } from '../constants';
 
 import mainBurner1 from '../assets/images/main_burner_1.jpg';
 import mainBurner2 from '../assets/images/main_burner_2.jpg';
@@ -48,7 +49,7 @@ const Hero: React.FC = () => {
             {/* Overlay Content */}
             <div className="relative z-10 text-center text-cream px-4">
                 <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 tracking-wider drop-shadow-lg">
-                    Rainy・Perch
+                    {EVENT_NAME}
                 </h1>
                 <p className="text-base md:text-2xl font-light tracking-wide drop-shadow-md">
                     雨の音と、コーヒーの香り。
