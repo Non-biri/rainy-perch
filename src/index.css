@@ -19,3 +19,8 @@
 body {
   @apply bg-cream text-brown-800 font-serif;
 }
+/* Rain animation for Opening */
+@keyframes fall {
+  0% { transform: translateY(-20px); }
+  100% { transform: translateY(110vh); }
+}

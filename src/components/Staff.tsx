@@ -68,7 +68,6 @@ const Staff: React.FC = () => {
     // slideIndex is offset by 1 because we prepend a clone of the last image
     const [slideIndex, setSlideIndex] = useState(1);
     const [isTransitioning, setIsTransitioning] = useState(true);
-    const sliderRef = useRef<HTMLDivElement>(null);
 
     // Build the extended slides array: [lastClone, ...originals, firstClone]
     const extendedStands = selectedStaff
@@ -213,7 +212,6 @@ const Staff: React.FC = () => {
                                 onTouchEnd={onTouchEnd}
                             >
                                 <div
-                                    ref={sliderRef}
                                     className={`flex w-full h-full ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
                                     style={{ transform: `translateX(-${slideIndex * 100}%)` }}
                                     onTransitionEnd={handleTransitionEnd}

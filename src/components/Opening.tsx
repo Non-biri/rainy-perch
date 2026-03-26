@@ -60,13 +60,7 @@ const Opening: React.FC<OpeningProps> = ({ onComplete }) => {
                 ))}
             </div>
 
-            {/* Inline styles for rain animation */}
-            <style>{`
-                @keyframes fall {
-                    0% { transform: translateY(-20px); }
-                    100% { transform: translateY(110vh); }
-                }
-            `}</style>
+
 
             <div
                 className={`z-10 text-2xl md:text-4xl font-serif tracking-widest transition-all duration-1000 ${fadeText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
