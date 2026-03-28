@@ -37,7 +37,7 @@ const staffMembers: StaffMember[] = [
         icon: staffAIcon,
         stands: [staffAStand1, staffAStand2, staffAStand3, staffAStand4],
         comment: "どうも店長です。だいたい何でも好きな雑食です。本名がBLの主人公と一緒だったりします。",
-        avatar: "狛乃(ラシュも増えるかも)"
+        avatar: "狛乃 or 凪"
     },
     {
         id: 2,
