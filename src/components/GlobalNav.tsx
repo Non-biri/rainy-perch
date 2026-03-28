@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { EVENT_NAME } from '../constants';
-import faviconIcon from '../assets/images/favicon.ico';
+import logoBlack from '../assets/images/logo_b.png';
+import logoWhite from '../assets/images/logo_w.png';
 
 const navItems = [
     { label: 'Top', href: '#top' },
@@ -70,11 +71,10 @@ const GlobalNav: React.FC = () => {
         <>
             {/* Fixed Navigation Bar */}
             <nav
-                className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-                    isScrolled
+                className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${isScrolled
                         ? 'py-2 bg-cream/90 backdrop-blur-md shadow-sm'
-                        : 'py-4 bg-cream/70 backdrop-blur-sm'
-                }`}
+                        : 'py-6 bg-transparent'
+                    }`}
             >
                 <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
                     {/* Logo */}
@@ -84,13 +84,10 @@ const GlobalNav: React.FC = () => {
                         className="flex items-center gap-2 group"
                     >
                         <img
-                            src={faviconIcon}
+                            src={isScrolled ? logoBlack : logoWhite}
                             alt={EVENT_NAME}
-                            className={`transition-all duration-300 ${isScrolled ? 'w-7 h-7' : 'w-9 h-9'}`}
+                            className={`transition-all duration-300 ${isScrolled ? 'h-8' : 'h-14'}`}
                         />
-                        <span className={`font-serif font-bold text-brown-900 tracking-wide transition-all duration-300 ${isScrolled ? 'text-base' : 'text-lg'}`}>
-                            {EVENT_NAME}
-                        </span>
                     </a>
 
                     {/* Desktop Menu */}
@@ -100,7 +97,7 @@ const GlobalNav: React.FC = () => {
                                 <a
                                     href={item.href}
                                     onClick={(e) => handleNavClick(e, item.href)}
-                                    className="text-sm font-bold text-brown-800 hover:text-green-dark transition-colors tracking-wide"
+                                    className={`font-bold transition-all tracking-wide ${isScrolled ? 'text-sm text-brown-800 hover:text-green-dark' : 'text-base text-white/90 hover:text-white'}`}
                                 >
                                     {item.label}
                                 </a>
@@ -114,29 +111,29 @@ const GlobalNav: React.FC = () => {
                         onClick={() => setIsDrawerOpen(true)}
                         aria-label="メニューを開く"
                     >
-                        <span className="block w-6 h-0.5 bg-brown-900 rounded-full" />
-                        <span className="block w-6 h-0.5 bg-brown-900 rounded-full" />
-                        <span className="block w-6 h-0.5 bg-brown-900 rounded-full" />
+                        <span className={`block w-6 h-0.5 rounded-full transition-colors duration-300 ${isScrolled ? 'bg-brown-900' : 'bg-white'}`} />
+                        <span className={`block w-6 h-0.5 rounded-full transition-colors duration-300 ${isScrolled ? 'bg-brown-900' : 'bg-white'}`} />
+                        <span className={`block w-6 h-0.5 rounded-full transition-colors duration-300 ${isScrolled ? 'bg-brown-900' : 'bg-white'}`} />
                     </button>
                 </div>
             </nav>
 
             {/* Mobile Drawer Overlay */}
             <div
-                className={`fixed inset-0 z-50 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-                    isDrawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                }`}
+                className={`fixed inset-0 z-50 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isDrawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    }`}
                 onClick={() => setIsDrawerOpen(false)}
             />
 
             {/* Mobile Drawer */}
             <div
-                className={`fixed top-0 right-0 z-50 h-full w-full bg-brown-900 text-cream flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
-                    isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
+                className={`fixed top-0 right-0 z-50 h-full w-full bg-brown-900 text-cream flex flex-col transition-transform duration-300 ease-in-out md:hidden ${isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+                    }`}
             >
-                {/* Close Button */}
-                <div className="flex justify-end p-5">
+                {/* Drawer Header */}
+                <div className="flex items-center justify-between p-5">
+                    <div className="w-10" />
+                    <img src={logoWhite} alt={EVENT_NAME} className="h-12" />
                     <button
                         onClick={() => setIsDrawerOpen(false)}
                         className="text-cream text-3xl font-bold w-10 h-10 flex items-center justify-center hover:text-white transition-colors"

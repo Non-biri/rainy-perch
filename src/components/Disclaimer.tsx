@@ -15,16 +15,16 @@ const Disclaimer: React.FC = () => {
                     ※本イベントの運営とは直接的な関わりはございませんので、当サイトに関する内容を本イベントへ直接お問い合わせすることはご遠慮ください。
                 </p>
                 <p>
+                    ※画像の掲載停止（削除）をご希望の場合は、個別に{AUTHOR.name}（X：<a href={AUTHOR.xUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">{AUTHOR.xHandle}</a>）までご連絡ください。それ以外のお問い合わせにはお答えしかねますのでご了承ください。
+                </p>
+                <p>
                     ※当サイトの利用により生じたいかなる問題や損害について、{AUTHOR.name}は責任を負いかねます。
                 </p>
                 <p>
-                    ※更新は個人のペースで行うため、実際のイベント状況と異なる場合があります。最新情報は本イベントの公式Xにてご確認ください。
+                    ※更新は{AUTHOR.name}のペースで行うため、実際のイベント状況と異なる場合があります。最新情報は本イベントの公式Xにてご確認ください。
                 </p>
                 <p>
                     ※当サイトは予告なく内容変更や公開終了となる場合がございます。あらかじめご了承ください。
-                </p>
-                <p>
-                    ※当サイトについてお気づきの点がございましたら、個別に{AUTHOR.name}（X：{AUTHOR.xHandle}）までご連絡ください。
                 </p>
             </div>
         </section>

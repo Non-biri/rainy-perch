@@ -28,4 +28,5 @@ export const SITE = {
 export const AUTHOR = {
     name: 'NON_',
     xHandle: '@Non_Biri_Iko',
+    xUrl: 'https://x.com/Non_Biri_Iko',
 } as const;

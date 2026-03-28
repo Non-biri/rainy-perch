@@ -75,7 +75,8 @@ const HowToJoin: React.FC = () => {
                 {/* Closing Message */}
                 <div className="mt-16 text-center text-lg">
                     <p className="text-xl font-serif tracking-widest">
-                        皆様のご来店を心よりお待ちしております。
+                        皆様のご来店を<br />
+                        心よりお待ちしております。
                     </p>
                 </div>
             </div>
