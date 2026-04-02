@@ -8,7 +8,6 @@ import Concept from './components/Concept';
 import Staff from './components/Staff';
 import Gallery from './components/Gallery';
 import News from './components/News';
-import VRCGroup from './components/VRCGroup';
 import HowToJoin from './components/HowToJoin';
 import Disclaimer from './components/Disclaimer';
 import Footer from './components/Footer';
@@ -36,9 +35,8 @@ function App() {
         </div>
         <div id="news">
           <section className="py-20 px-4 bg-cream text-brown-900 border-t border-brown-100">
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="max-w-5xl mx-auto">
               <News />
-              <VRCGroup />
             </div>
           </section>
         </div>

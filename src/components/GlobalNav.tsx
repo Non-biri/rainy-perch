@@ -132,7 +132,6 @@ const GlobalNav: React.FC = () => {
             >
                 {/* Drawer Header */}
                 <div className="flex items-center justify-between p-5">
-                    <div className="w-10" />
                     <img src={logoWhite} alt={EVENT_NAME} className="h-12" />
                     <button
                         onClick={() => setIsDrawerOpen(false)}

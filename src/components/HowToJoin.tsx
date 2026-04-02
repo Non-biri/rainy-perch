@@ -32,24 +32,33 @@ const HowToJoin: React.FC = () => {
                 {/* Pre-registration Block */}
                 <div className="mb-16 text-center text-sm md:text-lg">
                     <div className="bg-brown-900/40 p-8 rounded-lg border border-brown-300 mx-auto max-w-2xl">
-                        <h3 className="text-xl font-bold mb-4 text-cream">事前予約</h3>
-                        <p className="mb-6 opacity-90">
-                            下記リンクより参加の事前予約を受け付けております。<br />
-                            御予約された方から優先的にご案内します。<br />
-                            <br />
-                            <span className="text-xs md:text-sm">
-                                ※定員以上のご予約があった場合は抽選となります。<br />
-                                ※定員に余裕があった場合は、ご予約の方をご案内後Group+でオープンする場合があります。
-                            </span>
+                        <p className="mb-2 opacity-90">
+                            当店は事前予約制です。
                         </p>
-                        <a
-                            href={LINKS.reservationForm}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-cream text-brown-900 font-bold px-8 py-3 rounded-full hover:bg-white transition-colors"
-                        >
-                            事前予約はこちら
-                        </a>
+                        <p className="mb-6 opacity-90">
+                            御予約された方を優先でご案内したのち、<br />Group＋でオープンいたします。
+                        </p>
+                        <p className="mb-6 opacity-90 text-xs md:text-sm">
+                            ※定員以上のご予約があった場合は抽選となります。
+                        </p>
+                        <div className="flex flex-col items-center gap-4">
+                            <a
+                                href={LINKS.reservationForm}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-80 max-w-full text-center bg-cream text-brown-900 font-bold px-8 py-3 rounded-full hover:bg-white transition-colors"
+                            >
+                                事前予約はこちら
+                            </a>
+                            <a
+                                href={LINKS.vrcGroup}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-80 max-w-full text-center bg-cream text-brown-900 font-bold px-8 py-3 rounded-full hover:bg-white transition-colors"
+                            >
+                                VRCグループへの参加はこちら
+                            </a>
+                        </div>
                     </div>
                 </div>
 
